@@ -1,0 +1,38 @@
+		<%- include('../partials/head.ejs') %>
+
+		<title>Sign Up | Random Jobs</title>
+
+		<%- include('../partials/navbar.ejs') %>
+		
+		<!-- signup section start -->
+		<section class="login-wrapper">
+			<div class="container">
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+					<form action="/signup" method="POST">
+						
+						<%if(errors.length>0){%>
+							<div class="alert alert-danger">
+							  <%errors.forEach(error=>{%> <%= error%><br />
+							  <%})%>
+							</div>
+							<%}%>
+						<h2>Sign Up</h2>
+						<input type="text" class="form-control input-lg" name="name" placeholder="Full Name" required>
+						<select class="form-control input-lg"  name="usertype" required>
+							<option value="usertype" >Select User Type</option>
+							<option value="recruiter">Recruiter</option>
+							<option value="jobseeker">JobSeeker</option>
+						</select>
+						<input type="email" class="form-control input-lg" name="email" placeholder="Email" required>
+						<input type="tel" class="form-control input-lg" name="phone" placeholder="Phone Number" required>
+						<input type="password" class="form-control input-lg" name="password"  minlength="6" placeholder="Password" required>
+                        <input type="password" class="form-control input-lg" name="confirm_password" placeholder="Confirm your password" required>
+						<button type="signup" class="btn btn-primary">sign Up</button>
+						<p>Already have an Account? <a href="/signin">Sign In</a></p>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- signup section End -->	
+		
+		<%- include('../partials/footer.ejs') %>	

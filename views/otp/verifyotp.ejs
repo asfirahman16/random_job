@@ -1,0 +1,77 @@
+<%- include('../partials/head.ejs') %>
+		
+<title>Verify OTP | Random Jobs</title>
+
+<%- include('../partials/navbar.ejs') %>
+
+<!-- Sign Up section start -->
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <%if(error.length>0){%>
+                <div class="alert alert-danger"><%=error%></div>
+                <%}%>
+            <form action="/verifyotp" method="POST">
+                <h2>Verify OTP</h2>
+                <input type="number" class="form-control input-lg" name="otp" placeholder="OTP" required>
+                <div id="script_math_user_edit" hidden>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required="required"
+                        class="form-control"
+                        value="<%=name%>"
+                    />
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required="required"
+                        class="form-control"
+                        value="<%=email%>"
+                    />
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required="required"
+                        class="form-control"
+                        value="<%=phone%>"
+                    />
+                    <input
+                        type="text"
+                        id="usertype"
+                        name="usertype"
+                        required="required"
+                        class="form-control"
+                        value="<%=usertype%>"
+                    />
+                    <input
+                        type="text"
+                        id="otpid"
+                        name="otpid"
+                        required="required"
+                        class="form-control"
+                        value="<%=otpid%>"
+                    />
+
+                    <input
+                        type="text"
+                        id="password"
+                        name="password"
+                        required="required"
+                        class="form-control"
+                        value="<%=password%>"
+                    />
+
+                </div>
+                <button type="submit" class="btn btn-primary">Verify OTP</button>
+            </form>
+        </div>		
+    </div>
+</section>
+<!-- Sign Up section End -->	
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,27 @@
+<%- include('../partials/head.ejs') %>
+		
+<title>Forgot Password | Random Jobs</title>
+
+<%- include('../partials/navbar.ejs') %>
+
+<!-- Sign Up section start -->
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <%if(errors.length>0){%>
+            <div class="alert alert-danger">
+                <%errors.forEach(error=>{%> <%= error%><br />
+                <%})%>
+            </div>
+            <%}%>
+            <form action="/forgotpassword" method="POST">
+                <h2>Enter Your Email</h2>
+                <input type="email" class="form-control input-lg" name="email" placeholder="Email" required>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+        </div>		
+    </div>
+</section>
+<!-- Sign Up section End -->	
+
+<%- include('../partials/footer.ejs') %>

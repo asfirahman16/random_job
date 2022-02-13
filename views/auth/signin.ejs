@@ -1,0 +1,35 @@
+		<%- include('../partials/head.ejs') %>
+		
+		<title>Sign In | Random Jobs</title>
+   
+		<%- include('../partials/navbar.ejs') %>
+
+		<!-- Sign Up section start -->
+		<section class="login-wrapper">
+			<div class="container">
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+					<% let success="Your account has been created Successfully. Please Sign In!" %>
+					<%if(error.length>0){if(error==success){%>
+					<div class="alert alert-success"><%=error%></div>
+					<%}else if(error=="Your password has been chaged Successfully. Please Sign In again!"){%>
+					<div class="alert alert-success"><%=error%></div>
+					<%}else if(error=="Your email has been chaged Successfully. Please Sign In again!"){%>
+					<div class="alert alert-success"><%=error%></div>
+					<%}else{%>
+					<div class="alert alert-danger"><%=error%></div>
+					<%}%><%}%>
+					
+					<form action="/signin" method="POST">
+						<h2>Sign In</h2>
+						<input type="email" class="form-control input-lg" name="email" placeholder="Email" required>
+						<input type="password" class="form-control input-lg" name="password" placeholder="Password" required>
+						<button type="submit" class="btn btn-primary">Sign In</button>
+						<p>Forgot password? <a href="/forgotpassword">Reset Password</a></p>
+						<p>Don't have an Account? <a href="/signup">Sign Up</a></p>
+					</form>
+				</div>		
+			</div>
+		</section>
+		<!-- Sign Up section End -->	
+		
+		<%- include('../partials/footer.ejs') %>

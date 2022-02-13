@@ -1,0 +1,67 @@
+<%- include('../partials/head.ejs') %>
+<title>Post a Job | Random Jobs</title>
+<%- include('../partials/navbar.ejs') %>
+
+<style> 
+	input[type=file] {
+		width: 100%;
+		padding: 12px 20px;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+	}
+</style>
+				
+
+<!-- Inner Banner -->
+<section class="inner-banner" style="backend:#242c36 url(https://via.placeholder.com/1920x600)no-repeat;">
+	<div class="container">
+		<div class="caption">
+			<text color:"#ffffff" style="font-size: 45px">Post a Job</text>
+			<p>Hire Job Seeker!!</p>
+		</div>
+	</div>
+</section>
+
+<section class="jobs">
+	<div class="container">
+		<div class="row heading">
+			
+				<div class="container">
+					<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+						<form action="/jobCreation", method="Post" enctype="multipart/form-data">
+							<input type="text" class="form-control input-lg" name="name" placeholder="Job Name" required>
+							<select class="form-control input-lg"  name="category" placeholder="Select" required>
+								<option value=" " >Select Category</option>
+								<option value="Computer Science" >Computer Science</option>
+								<option value="Managerial">Managerial</option>
+								<option value="Mechanical">Mechanical</option>
+								<option value="Education">Education</option>
+								<option value="Chores">Chores</option>
+							</select>
+							<select class="form-control input-lg"  name="jobtype" placeholder="Select" required>
+								<option value=" " >Select Job Type</option>
+								<option value="fulltime">Full Time</option>
+								<option value="parttime">Part Time</option>
+								<option value="freelancing">Freelancing</option>
+								<option value="internship">Internship</option>
+							</select>
+							<input type="datetime-local" class="form-control input-lg" name="startdate" required>
+							<input type="datetime-local" class="form-control input-lg" name="enddate"  required>
+							<input type="text" class="form-control input-lg" name="union" placeholder="Union" required>
+							<input type="text" class="form-control input-lg" name="thana" placeholder="Thana" required>
+							<input type="text" class="form-control input-lg" name="district" placeholder="District" required>
+							<input type="number" class="form-control input-lg" name="payment" placeholder="Payment" required>
+							<textarea class="form-control" rows = "5" cols = "60" name = "jobdescription" placeholder="Write Detailed Information" required></textarea>
+							<input type="file" name="file" id="file" class="custom-file-input" required>
+							</br>
+							<button type="createjob" class="btn btn-primary">Post a Job</button>
+						</form>
+					</div>
+				</div>
+			
+		</div>
+	</div> 
+</section>   
+<%- include('../partials/footer.ejs') %>
+
+			

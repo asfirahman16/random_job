@@ -1,0 +1,19 @@
+<%- include('./partials/head.ejs') %>
+		
+<title>Home | Random Jobs</title>
+
+<%- include('./partials/homeNavbar.ejs') %>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<section class="main-banner" style="background:#242c36 url(img/slider-01.jpg) no-repeat">
+	<div class="container">
+		<div class="caption">
+			<h2>Find Your Desired Job<br> Or Post a Job<br></h2>
+			<%if(!(req.isAuthenticated())){%>
+				<a href="/signup"><text style="font-size: 50px; color:#5892ff;">Create an account!</text></a>
+			<% } %>
+		</div>
+	</div>
+</section>
+
+<%- include('./partials/footer.ejs') %>

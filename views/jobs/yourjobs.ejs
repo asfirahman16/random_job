@@ -1,0 +1,55 @@
+<%- include('../partials/head.ejs') %>
+<title>Your Jobs | Random Jobs</title>
+<%- include('../partials/navprofilepages.ejs') %>
+
+<style> 
+div{
+    align-items: center;
+}
+
+section{
+    text-align: center;
+    background-color: #036961;
+    color: #ffffff;
+    height: 250px;
+}
+</style>
+
+<section >
+<div>
+    <div class="caption">
+    </br>
+    <text color:"#ffffff" style="font-size: 55px">Your Posted Jobs</text>
+</div>
+</div>
+</section>
+<br>
+
+<div class="container">
+<% jobs.forEach(job =>{ %>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="basic-information"> 
+                <div class="col-md-3 col-sm-3"></div>
+                <div class="col-md-6 col-sm-6"> 
+                    <div class="profile-content">
+                        <ul class="information">
+                            <li><text style="font-size: 35px"><%=job.name%></text></li>
+                            <li><span>Category:</span><%= job.category %></li>
+                            <li><span>Type:</span><%= job.jobtype %></li>
+                            <li><span>Payment:</span><%= job.payment %></li><br>
+                            <% const jobURL="yourjobs/"+job._id%>
+                            <a class="btn btn-default" type="submit" href="<%= jobURL %>"><b style="font-size: 15px" >Details</b></a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3"></div>
+                </div>
+            </div>
+            <br>
+        </div>   
+    <% }); %>
+</div>
+
+<%- include('../partials/footer.ejs') %>	
+

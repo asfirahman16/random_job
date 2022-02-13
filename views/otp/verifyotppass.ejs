@@ -1,0 +1,37 @@
+<%- include('../partials/head.ejs') %>
+		
+<title>Verify OTP | Random Jobs</title>
+
+<%- include('../partials/navbar.ejs') %>
+
+<!-- Sign Up section start -->
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <% let success="Please verify your email!" %>
+            <%if(error.length>0){if(error==success){%>
+            <div class="alert alert-success"><%=error%></div>
+            <%}else{%>
+            <div class="alert alert-danger"><%=error%></div>
+            <%}%><%}%>
+            <form action="/verifyotppass" method="POST">
+                <h2>Verify OTP</h2>
+                <input type="number" class="form-control input-lg" name="otp" placeholder="OTP" required>
+                <div id="script_math_user_edit" hidden>
+                    <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required="required"
+                    class="form-control"
+                    value="<%=password%>"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Verify OTP</button>
+            </form>
+        </div>		
+    </div>
+</section>
+<!-- Sign Up section End -->	
+
+<%- include('../partials/footer.ejs') %>

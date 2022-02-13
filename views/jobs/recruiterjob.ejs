@@ -1,0 +1,180 @@
+<%- include('../partials/head.ejs') %>
+<title>Your Jobs | Random Jobs</title>
+<%- include('../partials/navprofilepages.ejs') %>
+
+<style> 
+    div{
+        align-items: center;
+    }
+
+    section{
+        text-align: center;
+        background-color: #036961;
+        color: #ffffff;
+        height: 250px;
+    }
+</style>
+
+<section >
+    <div>
+        <div class="caption">
+        </br>
+            <text color:"#ffffff" style="font-size: 55px"><%=job.name%></text>
+        </div>
+    </div>
+</section>
+<br>
+
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row">
+               <div class="basic-information">
+                    <div class = row>
+                        <div class="col-md-3 col-sm-3"></div>
+                        <div style ="text-align:center" class="col-md-6 col-sm-6">
+                            <%if(errors.length>0){%>
+                                <%errors.forEach(error => {%> <br />
+                                    <%if(error == "This Job has been marked as Done!"){%>
+                                        <div class="alert alert-success"><%= error%></div>
+                                    <%} else if(error == "This Job has been Assigned!"){%>
+                                        <div class="alert alert-success"><%= error%></div>
+                                    <%} else {%>
+                                        <div class="alert alert-danger"><%= error%></div>
+                                    <%}%>
+                                <%});%>
+							<%}%>
+                        </div>
+                        <div class="col-md-3 col-sm-3"></div>
+                    </div>
+                    <div class="col-md-1 col-sm-1"></div> 
+                    <div class="col-md-10 col-sm-10"></div>
+                       <div class="profile-content">
+                            
+                            <ul class="information">
+                                <li><h5>General Info</h5></li>
+                                <li><span>Recruiter:</span><%= job.recruiter.name %></li>
+                                <li><span>Category:</span><%= job.category %></li>
+                                <li><span>Type:</span><%= job.jobtype %></li>
+                                <li><span>Start Date:</span><%= job.startdate %></li>
+                                <li><span>End Date:</span><%= job.enddate %></li>
+                                <li><span>Payment:</span><%= job.payment %></li><br>
+                                <li><h5>Address</h5></li>
+                                <li><span>Union:</span><%= job.union %></li>
+                                <li><span>Thana:</span><%= job.thana %></li>
+                                <li><span>District:</span><%= job.district %></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-sm-1"></div> 
+               </div>
+            </div class="col-md-12 col-sm-12">
+        </div>
+        <div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-1 col-sm-1"></div>
+        <div class="col-md-10 col-sm-10">
+            <%if (job.done == true){%>
+                <h5 style="color: #7a1841;">This Job has been done</h5>
+            <%} else {%>
+                <% const selectURL="jobdone/"+job._id%>
+                <text style="color: #018f83;" style="font-size: 15px"><b>Please Click the button to mark the Job as done:</b></text><br><br>
+                <a class="btn btn-default" type="submit" href="<%= selectURL %>"><b style="font-size: 15px" >Job Done</b></a>        
+            <%}%>
+        </div>
+        <div class="col-md-1 col-sm-1"></div>
+    </div>
+    <br> 
+    <br> 
+    <br>
+    <div class="row">
+        <div class="col-md-1 col-sm-1"></div>
+        <div class="col-md-10 col-sm-10">
+            <%if (job.done == false){%>
+                <%if (job.isassigned == false){%>
+                    <% if(job.requests.length > 0) { %>
+                        <text style="color: #018f83;" style="font-size: 15px"><b>Requests</b></text><br><br>
+                        <table border="1" style="table-layout: fixed; width: 60%;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center; padding: 10px;">Job Seeker</th>
+                                    <th style="text-align:center; padding: 10px;">Assign</th>
+                                </tr>
+                            </thead>
+                            
+                                <%job.requests.forEach(request => {%>
+                                    <tr>
+                                        <% const userURL="user/"+request.id%>
+                                        <td style="text-align:center; padding: 10px;"><a href="<%= userURL %>"><text style="font-size: 15px; color:#3a69c0;"><%=request.name%></text></a></td>
+                                        <% const requestURL="jobassign/"+job._id+"&"+request.id%>
+                                        <td style="text-align:center; padding: 10px;"><a class="btn btn-default" type="submit" href="<%= requestURL %>"><text style="font-size: 15px; " >Assign Job</text></a></td>
+                                    </tr>
+                                <% }) %>
+                        </table>
+                    
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <br> 
+                                <br> 
+                                <br>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <h5 style="color: #7a1841;">There is no request for the Job!</h5> 
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <br> 
+                                <br>
+                            </div>
+                        </div>
+                    <% } %> 
+                <% } else { %> 
+                    <h5 style="color: #018f83;">Job has been assigned to:</h5> 
+                    <% const usrURL="user/"+job.assigned.id%>
+                    <a href="<%= usrURL %>"><text style="font-size: 15px; color:#0c3685;"><b><%=job.assigned.name%></b></text></a>                                        
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <br> 
+                            <br>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="col-md-1 col-sm-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 col-sm-1"></div>
+        <div class="col-md-10 col-sm-10">
+            <%if (job.jobdescription != null){%>
+                <h5>Description</h5>
+                <p><%= job.jobdescription %></p>
+            <%} else {%>
+                <h5 style="color: #7a1841;">Description has not been written!</h5>
+            <% } %>
+        </div>
+        <div class="col-md-1 col-sm-1"></div>
+    </div>
+    <br> <br> <br>
+    <div class="row">
+        <div class="col-md-1 col-sm-1"></div>
+        <div class="col-md-10 col-sm-10">
+            <%if (job.document != null){%>
+                <h5>Document</h5>
+                <% console.log("1")%>
+                <% const sURL="jobdocument/"+job._id%>
+                <embed src="<%= sURL %>" width="100%" height="800px" />
+            <%} else {%>
+                <h5 style="color: #7a1841;">Document has not been uploaded!</h5>
+            <% } %>
+        </div>
+        <div class="col-md-1 col-sm-1"></div>   
+    </div>
+</div>
+<br>
+<br>
+<%- include('../partials/footer.ejs') %>	
+

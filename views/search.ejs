@@ -1,0 +1,47 @@
+<%- include('./partials/head.ejs') %>
+		
+<title>Search | Random Jobs</title>
+
+<%- include('./partials/navprofilepages.ejs') %>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<section class="main-banner" style="background:#242c36 url(img/slider-01.jpg) no-repeat">
+	<div class="container">
+		<div class="caption">
+			<h2>Find Your Desired Job</h2>
+			<form action="/postedjobs" method="POST">
+				
+					<div class="col-md-2 col-sm-2 no-pad">	
+					</div>
+
+					<div class="col-md-8 col-sm-8 no-pad">
+						<input type="text" class="form-control input-lg" name="name" placeholder="Job Name">
+						<select class="form-control input-lg"  name="category" placeholder="Select">
+							<option value = " ">Select Category</option>
+							<option value="Computer Science" >Computer Science</option>
+							<option value="Managerial">Managerial</option>
+							<option value="Mechanical">Mechanical</option>
+							<option value="Education">Education</option>
+							<option value="Chores">Chores</option>
+						</select>
+						<select class="form-control input-lg"  name="jobtype" placeholder="Select">
+							<option value = " ">Select Job Type</option>
+							<option value="fulltime">Full Time</option>
+							<option value="parttime">Part Time</option>
+							<option value="freelancing">Freelancing</option>
+							<option value="internship">Internship</option>
+						</select>
+						<input type="text" class="form-control input-lg" name="union" placeholder="Union">
+						<input type="text" class="form-control input-lg" name="thana" placeholder="Thana">
+						<input type="text" class="form-control input-lg" name="district" placeholder="District">
+						<input type="submit" class="btn seub-btn" value="submit" />			
+					</div>
+					<div class="col-md-2 col-sm-2 no-pad">	
+					</div>
+				
+			</form>
+		</div>
+	</div>
+</section>
+	
+<%- include('./partials/footer.ejs') %>

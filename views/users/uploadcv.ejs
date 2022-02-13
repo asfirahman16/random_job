@@ -1,0 +1,45 @@
+<%- include('../partials/head.ejs') %>
+<title>Upload CV | Random Jobs</title>
+<%- include('../partials/navprofilepages.ejs') %>
+
+<style> 
+    input[type=file] {
+      width: 100%;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 3px solid #ccc;
+    }
+</style>
+
+<!-- signup section start -->
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <form action="/cv" method="POST" enctype="multipart/form-data">
+                
+                <%if(errors.length>0){%>
+                <div class="alert alert-danger">
+                    <%errors.forEach(error=>{%> <%= error%><br />
+                    <%})%>
+                </div>
+                <%}%>
+
+                <% if(user.usertype=="jobseeker"){ %>
+                    <h2>Upload CV</h2>
+                <% } else { %>
+                    <h2>Upload a detailed Document</h2>
+                <% } %>
+           
+                
+                <div class="custom-file mb-3"></div>
+                    <input type="file" name="file" id="file" class="custom-file-input">
+                    </br>
+                    <button  type="submit" value="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- signup section End -->	
+
+<%- include('../partials/footer.ejs') %>		

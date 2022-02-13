@@ -1,0 +1,41 @@
+<%- include('../partials/head.ejs') %>
+<title>Edit Profile | Random Jobs</title>
+<%- include('../partials/navprofilepages.ejs') %>\
+
+<!-- signup section start -->
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <form action="/updateprofile" method="POST">
+                
+                <%if(errors.length>0){%>
+                <div class="alert alert-danger">
+                    <%errors.forEach(error=>{%> <%= error%><br />
+                    <%})%>
+                </div>
+                <%}%>
+
+                <h2>Update Profile</h2>
+                <input type="text" class="form-control input-lg" name="name" placeholder="Full Name" value="<%=req.user.name%>" required>
+                <!--<select class="form-control input-lg"  name="usertype" required>
+                    <option value="usertype" >Select User Type</option>
+                    <option value="recruiter">Recruiter</option>
+                    <option value="jobseeker">JobSeeker</option>
+                </select>-->
+                <input type="tel" class="form-control input-lg" name="phone" placeholder="Phone Number" value="<%=req.user.phone%>" required>
+                <input type="number" class="form-control input-lg" name="age" placeholder="Age" value="<%=req.user.age%>" required>
+                <input type="text" class="form-control input-lg" name="union" placeholder="Union" value="<%=req.user.address.union%>" required>
+                <input type="text" class="form-control input-lg" name="thana" placeholder="Thana" value="<%=req.user.address.thana%>" required>
+                <input type="text" class="form-control input-lg" name="district" placeholder="District" value="<%=req.user.address.district%>" required>
+                <input type="text" class="form-control input-lg" name="userOccupation" value="<%=req.user.userOccupation%>" placeholder="Recruiter Type/Occupation">
+                <input type="text" class="form-control input-lg" name="linkedin" placeholder="LinkedIn ID" value="<%=req.user.linkedin%>" >
+                <input type="text" class="form-control input-lg" name="facebook" placeholder="Facebook ID" value="<%=req.user.facebook%>" >
+                <input type="password" class="form-control input-lg" name="password"  minlength="6" placeholder="Password (For User Validation)" required>
+                <button type="signup" class="btn btn-primary">Update Profile</button>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- signup section End -->	
+
+<%- include('../partials/footer.ejs') %>		

@@ -1,0 +1,25 @@
+<%- include('../partials/head.ejs') %>
+<title>Change Email | Random Jobs</title>
+<%- include('../partials/navprofilepages.ejs') %>
+
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <%if(errors.length>0){%>
+            <div class="alert alert-danger">
+                <%errors.forEach(error=>{%> <%= error%><br />
+                <%})%>
+            </div>
+            <%}%>
+            <form action="/resetemail" method="POST">
+                <h2>Change Email</h2>
+                <input type="email" class="form-control input-lg" name="new_email" placeholder="New Email" required>
+                <input type="email" class="form-control input-lg" name="confirm_email" placeholder="Confirm Email" required>
+                <button type="submit" class="btn btn-primary">Change Email</button>
+            </form>
+        </div>		
+    </div>
+</section>
+<!-- Sign Up section End -->	
+
+<%- include('../partials/footer.ejs') %>

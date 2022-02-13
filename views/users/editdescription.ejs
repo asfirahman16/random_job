@@ -1,0 +1,29 @@
+<%- include('../partials/head.ejs') %>
+<title>Edit Description | Random Jobs</title>
+<%- include('../partials/navprofilepages.ejs') %>
+
+
+<!-- signup section start -->
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <form action="/updatedescription" method="POST">
+                
+                <%if(errors.length>0){%>
+                <div class="alert alert-danger">
+                    <%errors.forEach(error=>{%> <%= error%><br />
+                    <%})%>
+                </div>
+                <%}%>
+
+                <h2>Update Description</h2>
+                <textarea class="form-control" rows = "5" cols = "60" name = "description" placeholder="Write Detailed Information"></textarea>
+                <input type="password" class="form-control input-lg" name="password"  minlength="6" placeholder="Password (For User Validation)" required>
+                <button type="signup" class="btn btn-primary">Update Description</button>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- signup section End -->	
+
+<%- include('../partials/footer.ejs') %>		
